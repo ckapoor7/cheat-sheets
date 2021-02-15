@@ -1,0 +1,216 @@
+
+\documentclass{article}
+%a bunch of (possibly useless) imports
+\usepackage[landscape]{geometry}
+\usepackage{url}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{esint}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathmorphing}
+\usepackage{amsmath,amssymb}
+
+\usepackage{colortbl}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\makeatletter
+
+\newcommand*\bigcdot{\mathpalette\bigcdot@{.5}}
+\newcommand*\bigcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
+\makeatother
+
+\title{130 Cheat Sheet}
+\usepackage[brazilian]{babel}
+\usepackage[utf8]{inputenc}
+\advance\topmargin-.8in
+\advance\textheight3in
+\advance\textwidth3in
+\advance\oddsidemargin-1.5in
+\advance\evensidemargin-1.5in
+\parindent0pt
+\parskip2pt
+\newcommand{\hr}{\centerline{\rule{3.5in}{1pt}}}
+%\colorbox[HTML]{e4e4e4}{\makebox[\textwidth-2\fboxsep][l]{texto}
+\begin{document}
+
+\begin{center}{\huge{\textbf{Chem F110}}}\\
+\end{center}
+\begin{multicols*}{3}
+
+\tikzstyle{mybox} = [draw=black, fill=white, very thick,
+    rectangle, rounded corners, inner sep=10pt, inner ysep=10pt]
+\tikzstyle{fancytitle} =[fill=black, text=white, font=\bfseries]
+
+
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Equivalence point when $[OH^{-}] = [H_{3}O^{+}]$ \\
+    $pH = \log_{10}[H_{3}O^{+}]$ \\
+    Henderson-Hasselbach equation: 
+    \begin{equation*}
+        pH = pK_{a}+\log_{10}\left(\frac{[A^{-}]}{[HA]}\right)
+    \end{equation*}
+    $pH=pK_a$ at half equivalence point\\
+    Procedure:
+    \begin{itemize}
+        \item Standardize $NaOH$ ($N_1V_1=N_2V_2$)
+        \item Titrate weak acid with $NaOH$
+        \item Equivalence point: Peak of $\frac{\Delta pH}{\Delta V}$
+    \end{itemize}
+    \end{minipage}
+};
+
+\node[fancytitle, right=10pt] at (box.north west) {\textit{pH} curve};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Secondary standard : $EDTA$
+    Indicator used : \textbf{Erichrome Black T} ($EBT$)\\
+    Initial color : \textbf{Red wine} due to cations in the analyte\\
+    Intermediate color : \textbf{Purple}\\
+    Final color : \textbf{Bright blue} due to \textit{free EBT}, $Ca^{2+}$ chelated with $EDTA$\\
+    Procedure:
+    \begin{itemize}
+        \item Standardize $EDTA$
+        \item Titrate $EDTA$ with $CaCO_3$ 
+    \end{itemize}
+    Hardness in $ppm$ = $\left(\frac{0.1\cdot x\cdot y}{m}\right)\cdot 10^6$\\
+    $x$ = Volume of \textit{EDTA}; $y$ = Molarity($M$) of \textit{EDTA}\\
+    $m$ = Mass of water sample $(gm)$
+    \end{minipage}
+};
+
+\node[fancytitle, right=10pt] at (box.north west) {Hardness of water};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    $2Cu^{2+}+4I^{-} \rightleftharpoons Cu_2I_2+I_2$\\
+    Forward shifted rxn. due to continuous removal of $Cu_2I_2$ (insol. complex)\\
+    $I_2$ liberated titrated against \textbf{hypo} with starch as indicator
+    Sources of error:
+    \begin{itemize}
+        \item Aerial oxidation: $4I^{-}+4H^{+}+O_{2} \rightleftharpoons 2I_2+2H_2O$\\
+        Minimized by addition of $Na_2CO_3$ to remove $O_2$.
+        \item Volatility of $I_2$ : $I^{-}+I_2 \rightleftharpoons I_{3}^{-}$\\
+        Solved by adding excess $I^{-}$
+    \end{itemize}
+    \end{minipage}
+};
+
+\node[fancytitle, right=10pt] at (box.north west) {Iodometry};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Final product: $\beta-$hydroxy aldehyde/ketone (aldol)\\
+    Dehydration is usually exothermic\\
+    \textbf{Benzaldehyde}: Best reagent for cross aldol rxn (no $\alpha-$hydrogens $\therefore$ single product)\\
+    Procedure:
+    \begin{itemize}
+        \item Synthesis of dibenzalacetone
+        \item Recrystallization
+    \end{itemize}
+    Simple stoichiometry/aldol mechanism problems.
+    \end{minipage}
+};
+
+\node[fancytitle, right=10pt] at (box.north west) {Dibenzalacetone};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    	\textbf{Aldehydes + Amines} = Schiff's base (mild conditons)\\
+    	Schiff's base ligand formed: \textbf{Salen's ligand} (Mol. wt = $268.31$gm/mol)\\
+        The above ligand is further grinded with\\ \textbf{$Cu(OAc)_2\cdot 2H_2O$} to obtain a \textbf{Cu(II)} comple\\
+        Color of grinded product : \textbf{Bright Yellow}
+    \end{minipage}
+};
+
+\node[fancytitle, right=10pt] at (box.north west) {Schiff's base ligand};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Pseudo $1^{st}$ order reaction (rate constant = $k'$)\\
+    $-\frac{d[I_2]}{dt} = k'[I_2]^x$\\
+    $k' = k[CH_3COCH_3]^y[H^{+}]^z$ where the concentration terms are approximately constant\\
+    $T = \frac{I}{I_0}$ where $T$ is the transmittance and $I$, $I_0$ are the intensities of reflected and transmitted lights respectively\\
+    $A = -\log_{10}T = \log_{10}\left(\frac{I_0}{I}\right)$, where $A$ is the absorbance of the sample\\
+    Beer-Lambert law : $A = \epsilon cl$ where $\epsilon$ is the molar absorption coefficient(characteristic of absorbing species) and $l$ is the length of sample through which light passes\\
+    Optical density : $\epsilon c$\\
+    $I_{3}^{-}$ : Brownish red species
+    $I_2, I_{3}^{-}$ : Iodinating agents
+    \end{minipage}
+};
+\node[fancytitle, right=10pt] at (box.north west) {Kinetics};
+\end{tikzpicture}
+\\
+\\
+\\
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    $K_c = \frac{[CH_3COOC_2H_5][H_2O]}{[CH_3COOH][C_2H_5OH]}$\\
+    Acid catalyzed reaction\\
+    Procedure:
+    \begin{itemize}
+        \item Standardize $NaOH$ solution ($N_1V_1=N_2V_2$); (Phenolphthalein indicator)
+        \item Standardize $HCl$ solution (Phenolphthalein indicator)\\
+    \end{itemize}
+    \end{minipage}
+};
+
+\node[fancytitle, right=10pt] at (box.north west) {Equilibrium constant};
+\end{tikzpicture}
+
+
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+     Resistance $R$ = $\rho\frac{l}{A}$, where $l$ = distance b/w electrodes and $A$ = area of electrodes\\
+     Conductance $\Lambda = \frac{1}{R}$\\
+     specific conductance $\kappa = \frac{1}{\rho} = \frac{1}{R}\cdot\frac{l}{A}$\\
+     Cell constant = $\frac{l}{A}$\\
+     \textbf{AC} current should be used, because a DC current applied to an electrolyte produces a \textbf{back EMF}, opposing current flow\\
+     Equivalent conductance ($\Lambda_c$) = $\frac{1000\kappa}{C}$\\
+     Degree of dissociation ($\alpha$) = $\frac{\Lambda_c}{\Lambda_0}$\\
+     Dissociation constant $(K_a)$ = $\frac{C\alpha^2}{1-\alpha}$\\
+     Where $C$ = concentration of solution, $\Lambda_0$ = conductance at infinite dilution
+    \end{minipage}
+};
+
+\node[fancytitle, right=10pt] at (box.north west) {Conductometry};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    Saponification : Triglycerides + $[OH^{-}]$ $\rightarrow$ Glycerol + Soap\\
+    Saponification value : Number of mg of $KOH$ required to neutralize fatty acids resulting from \textbf{complete} hydrolysis of $1g$ of fat\\
+    Used for studying \textbf{length of fatty acid chain}\\
+    Saponification value $\propto$ $\frac{1}{\text{Av. molecular weight}}$\\
+    Saponification value $\propto$ $\frac{1}{\text{Length of fatty acid chain}}$\\
+    Reaction:\\
+    \begin{equation*}
+        \text{Triglyceride} + 3KOH \rightarrow \text{Glycerol} + 3RCOOK
+    \end{equation*}
+    $RCOOK$ = Soap molecule
+    
+    \end{minipage}
+};
+
+\node[fancytitle, right=10pt] at (box.north west) {Saponification};
+\end{tikzpicture}
+\end{multicols*}
+\end{document}
