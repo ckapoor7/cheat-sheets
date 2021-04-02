@@ -1,0 +1,144 @@
+\documentclass[a4paper]{article} 
+\input{head}
+\begin{document}
+
+%Title section
+
+\fancyhead[C]{}
+\hrule \medskip % Upper rule
+\begin{minipage}{0.295\textwidth} 
+\raggedright
+\footnotesize
+Chaitanya Kapoor \hfill\\   
+2020A3PS1219P\hfill\\
+f20201219@pilani.bits-pilani.ac.in
+\end{minipage}
+\begin{minipage}{0.4\textwidth} 
+\centering 
+\Large
+General Chemistry 
+\end{minipage}
+\begin{minipage}{0.295\textwidth} 
+\raggedleft
+\today\hfill\\
+\end{minipage}
+\medskip\hrule 
+\bigskip
+
+Some useful constants:
+\begin{itemize}
+    \item $h$ (Planck's constant) = $6.626\times 10^{-34}$ J-s
+    \item $c$ (Speed of light) = $2.998\times 10^8\approx 3\times 10^8$ m/s 
+    \item $m_e$ (Mass of electron) = $9.1\times 10^{-31}$ kg
+    \item $e$ (Charge on an electron) = $1.6\times 10^{-19}$ C
+    \item $\hbar$ (Reduced Planck's constant) = $1.055\times 10^{-34}$ J-s
+\end{itemize}
+
+\section{Photoelectric effect}
+\begin{itemize}
+    \item Let the frequency of the incident light on the metal surface be $\nu$, and the work function of the metal be $\phi$. The energy of the ejected photon is given by: 
+    \begin{equation*}
+        E = h\nu - \phi
+    \end{equation*}
+    Which can be rewritten in terms of the wavelength ($\lambda$) and the speed of light ($c$) as:
+    \begin{equation*}
+        E = \frac{hc}{\lambda} - \phi
+    \end{equation*}
+    In the case where 
+    \begin{equation*}
+        \phi = h\nu_0 = \frac{hc}{\lambda_0}
+    \end{equation*}
+    $\nu_0$ and $\lambda_0$ are called the \textbf{threshold frequency and wavelength} respectively.
+    
+    \item For a particle of mass $m$ travelling with a velocity $v$, its (De Broglie) wavelength takes the form:
+    \begin{equation*}
+        \lambda = \frac{h}{mv} = \frac{h}{p}
+    \end{equation*}
+    Where $p$ is the linear momentum of the particle in question.
+    
+    \item When an electron of charge $-e$ is accelerated across a potential difference $V$, it acquires the kinetic energy $E = eV$. From this, it follows that the \textit{De Broglie wavelength} of the particle is:
+    \begin{equation*}
+        \lambda = \frac{h}{\sqrt{2m_eeV}}
+    \end{equation*}
+    $m_e$ being the mass of the electron.
+\end{itemize}
+
+\section{Schrödinger equation}
+\begin{itemize}
+    \item The \textbf{time independent Schrödinger equation} for a particle having the wavefunction $\psi$ (in a single dimension) is
+    \begin{equation*}
+        -\frac{\hbar^2}{2m}\frac{d^2\psi}{dx^2} + V(x)\psi = E\psi
+    \end{equation*}
+    The left hand side of the above equation is abbreviated to a \textit{single operator} known as the \textbf{Hamiltonian}, which represents the \textbf{total energy of a particular system}. We now have a compact version of the S.E: \boxed{\hat{H}\psi = E\psi}
+   
+   \item A wavefunction $\psi$ is said to be \textbf{normalised} if its probability density over the entire space is 1. More formally, the following relation must hold
+   \begin{equation*}
+       \int_{-\infty}^{\infty}\psi^*\psi dx = 1 
+   \end{equation*}
+   Where $\psi^*$ is the \textbf{complex conjugate} of $\psi$. Note that $psi$ is normalized only for a 1 dimensional case above. 
+   
+   \item Suppose that $\Delta x$ and $\Delta p$ denotes the uncertainty in the measurement of position and momentum respectively. Heisenberg's uncertainty principle states
+   \begin{equation*}
+       \Delta x\Delta p\geq \frac{\hbar}{2}
+   \end{equation*}
+\end{itemize}
+
+\section{Particle In a Box}
+\begin{enumerate}
+
+    \item \textbf{1D case}:\\
+    We consider a box of length $L$, quantum number $n$, particle mass $m$ and wavelength of the particle $\lambda$
+    \begin{itemize}
+        \item Acceptable values of linear momentum $p = \frac{nh}{2L}$
+        \item Solution to the Schrödinger equation for the $n^{\text{th}}$ excited state:
+        \begin{equation*}
+            \psi_n(x) = \sqrt{\frac{2}{L}}\sin{\left(\frac{n\pi x}{L}\right)}
+        \end{equation*}
+        \item Permitted energy values:
+        \begin{equation*}
+            E_n = \frac{n^2h^2}{8mL^2}
+        \end{equation*}
+        The energy of the lowest state ($n=1$) is called the \textbf{zero-point energy}
+    \end{itemize}
+    
+    \item \textbf{2D case}:\\
+    A box of dimensions $L_x$ and $L_y$ along the $x$ and $y$ directions is considered, with the quantum numbers $n_x$ and $n_y$
+    \begin{itemize}
+        \item Solution to the Schrödinger equation:
+        \begin{equation*}
+            \psi_{n_xn_y}(x,y) = \sqrt{\left(\frac{4}{L_xL_y}\right)}\sin{\left(\frac{n_x\pi x}{L_x}\right)}\sin{\left(\frac{n_y\pi y}{L_y}\right)}
+        \end{equation*}
+        \item Permissible energy values:
+        \begin{equation*}
+            E_{n_xn_y} = \left(\frac{n_x^2}{L_x^2} + \frac{n_y^2}{L_y^2}\right)\frac{h^2}{8m}
+        \end{equation*}
+    \end{itemize}
+\end{enumerate}
+
+\section{Rigid Rotor}
+\begin{enumerate}
+    \item \textbf{2D case}:\\
+    We consider here a particle of mass $m$ rotating in a circle of radius $r$. The moment of inertia of the system is taken to be $I = mr^2$
+    \begin{itemize}
+        \item Angular momentum $J_z = m_l\hbar$ where $m_l = 0, \pm 1, \pm 2
+        \dots$ 
+        \item Permissible energy values $E_n = \frac{n^2\hbar^2}{2I} = \frac{m_l^2\hbar^2}{2I}$ where $m_l$ and $n = 0, \pm 1, \pm 2
+        \dots$ 
+    \end{itemize}
+    
+    \item \textbf{3D case}:\\
+    In addition to the previously defined quantities, we introduce $l$: the \textbf{orbital angular momentum quantum number}.
+    \begin{itemize}
+        \item Permissible energy values $E_l = l(l+1)\frac{\hbar^2}{2mr^2}$\\
+        Here, $l = 0,1,2\dots$ and $m_l = -l,(-l+1)\dots(l-1), l$
+        \item Angular momentum is \textbf{quantized} and given by the values $J = \sqrt{l(l+1)}\hbar$
+    \end{itemize}
+\end{enumerate}
+
+\section{Simple Harmonic Oscillator}
+Here, we are concerned only with the permissible energy values:
+\begin{equation*}
+    E_v = \left(v+\frac{1}{2}\right)h\nu
+\end{equation*}
+Where $\nu$ is the \textbf{vibrational frequency} given by $\frac{1}{2\pi}\sqrt{\frac{k}{m}}$. The values of $\nu$ include the set of all non-negative integers.
+\end{document}
