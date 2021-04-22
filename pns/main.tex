@@ -1,0 +1,211 @@
+\documentclass[a4paper]{article} 
+\input{head}
+\begin{document}
+
+%Title section
+
+\fancyhead[C]{}
+\hrule \medskip % Upper rule
+\begin{minipage}{0.295\textwidth} 
+\raggedright
+\footnotesize
+Chaitanya Kapoor \hfill\\   
+2020A3PS1219P\hfill\\
+f20201219@pilani.bits-pilani.ac.in
+\end{minipage}
+\begin{minipage}{0.4\textwidth} 
+\centering 
+\Large
+Probability and Statistics
+\end{minipage}
+\begin{minipage}{0.295\textwidth} 
+\raggedleft
+\today\hfill\\
+\end{minipage}
+\medskip\hrule 
+\bigskip
+
+\section{Discrete probability}
+\begin{itemize}
+    \item \textbf{Expectation value}: For a discrete random variable $X$ (this can also be replaced by a function $h(x)$) and probability mass function $p(x)$
+    \begin{equation*}
+        E(x) = \mu_x = \sum_{x\in D}xp(x)
+    \end{equation*}
+    Some properties:
+    \begin{enumerate}
+        \item $E(C) = C$
+        \item $E(CX) = CE(X)$
+        \item $E(CX+d) = CE(X) + d$
+    \end{enumerate}
+    \item \textbf{Variance}: Assume the discrete random variable $X$ to have an expected value $\mu$. Then
+    \begin{equation*}
+        V(X) = \sum_{D}^{}(x-\mu)^2\cdot p(x) = E[(x-\mu)^2]
+    \end{equation*}
+    This can also be rewritten as $V(X) = \sigma^2 = E(X^2)- [E(X)]^2$.\\
+    For any arbitrary function $h(X)$ of the form $(aX+b)$, we have $V(h(X)) = a^2V(X)$
+    \item \textbf{Moment Generating Function (MGF): }For a discrete random variable $X$, $m_X(t) = E(e^{tX})$. Using this, we have the following
+    \begin{equation*}
+        \frac{d^rm_X(t)}{dt^r}\biggr\rvert_{t = 0} = E(X^r)
+    \end{equation*}
+    \item \textbf{Bernoulli Distribution: } Consider a random variable $X$ which takes Boolean values (0 and 1). Let the probability of obtaining the value 1 be $p$ and $0$ be $q = (1-p)$ 
+    \begin{enumerate}
+        \item $f(x, p) = p^x(1-p)^{1-x}$
+        \item $E(X) = p$
+        \item $\text{Var}(X) = pq$
+        \item $m_X(t) = q+pe^t$
+    \end{enumerate}
+    \item \textbf{Binomial Distribution: } For a random variable $X$ with parameters $n$ and $p$ (denoted by $X\sim\mathcal(n,p)$)
+    \begin{enumerate}
+        \item $m_X(t) = (q+pe^t)^n$
+        \item $E(X) = np$
+        \item $\text{Var}(X) = npq$
+        \item $p(x) = {n\choose x}p^x(1-p)^{n-x}$
+    \end{enumerate}
+    \item \textbf{Geometric Random Variable: } Let $X$ denote the random variable representing the number of trials required to get the $1^{\text{st}}$ success.
+    \begin{enumerate}
+        \item $g(n,p) = pq^{n-1}$
+        \item $E(X) = \frac{1}{p}$ and $E(X^2) = \frac{1+q}{p^2}$
+        \item $\text{Var}(X) = \frac{q}{p^2}$
+        \item $m_X(t) = \frac{pe^{-t}}{1-qe^t}$
+    \end{enumerate}
+    \item \textbf{Poisson distribution: }For a discrete random variable $X$ with the parameter $\mu$
+    \begin{enumerate}
+        \item $p(x,\mu) = \frac{e^{-\mu}\cdot\mu^x}{x!}$
+        \item $E(X) = \text{Var}(X) = \mu$
+        \item $m_X(t) = e^{\mu(e^t-1)}$
+    \end{enumerate}
+    Consider a binomial distribution $b(x; n,p)$ in the limit where $n\rightarrow\infty$ and $p\rightarrow 0$. In such a scenario, $b(x; n,p)\rightarrow p(x; \mu)$ where $\mu = np$
+    \item \textbf{Poisson process: } Let $P_k(t)$ denote the probability that $k$ events are observed during a particular time interval of length $t$, then
+    \begin{equation*}
+        P_k(t) = e^{-\alpha t}\cdot\frac{(\alpha t)^k}{k!}
+    \end{equation*}
+    Where $t$ is the random variable with the parameter $\mu = \alpha t$ and $\alpha$ specifies the rate of the process in question.
+\end{itemize}
+
+\section{Continuous probability}
+Consider a function $f(x)$ to be a PDF of a continuous random variable $x$
+\begin{itemize}
+    \item $P(a\leq x\leq b) = \int_{a}^{b}f(x)dx$
+    \item \textbf{CDF = }$F(x) = \int_{-\infty}^{x}f(x)dx$
+    \item \textbf{Expectation value and MGF:}
+    \begin{align*}
+    E(x) &= \int_{-\infty}^{\infty}xf(x)dx\\
+    E(H(x)) &= \int_{-\infty}^{\infty}H(x)f(x)dx\\
+    m_x(t) = E(e^{xt}) &= \int_{-\infty}^{\infty} e^{xt}f(x)dx
+    \end{align*}
+    \item \textbf{Moments, mean and variance:}
+    \begin{align*}
+        E(x^k) &= \int_{-\infty}^{\infty} x^kf(x)dx = \left(\frac{d^k}{dx^k}\left(m_x(t)\right)\right)\biggr\rvert_{t = 0}\\
+        \mu &= E(x) = \int_{-\infty}^{\infty} xf(x)dx\\
+        \sigma^2 &= \left(\int_{-\infty}^{\infty} x^2f(x)dx\right) - \left(\int_{-\infty}^{\infty} xf(x)dx\right)^2
+    \end{align*}
+    \item \textbf{Uniform distribution:\\ }
+    \begin{enumerate}
+        \item Probability density function:
+                \begin{equation*}
+                    f(x) = \begin{cases}
+                    \frac{1}{b-a}\quad & a\leq x\leq b\\
+                    0\quad &\text{elsewhere}
+                    \end{cases}
+                \end{equation*}
+        \item MGF, mean and variance:
+    \begin{align*}
+        m_x(t) &= \frac{e^{bt}-e^{at}}{(b-a)t}\\
+        \mu &= \frac{a+b}{2}\\
+        \sigma^2 &= \frac{(b-a)^2}{12}
+    \end{align*}
+    \end{enumerate}
+     \item \textbf{Normal/Gaussian distribution:} It is denoted as $X\sim N(\mu,\sigma^2)$, where $\mu$(mean) and $\sigma^2$ (variance) are the parameters of the distribution.
+     \begin{enumerate}
+         \item Probability density function:
+         \begin{equation*}
+             f(x) = \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}
+         \end{equation*}
+         \item MGF, expectation:
+         \begin{align*}
+             m_x(t_ &= e^{\mu t+\frac{t^2\sigma^2}{2}}\\
+             E(x) &= m_x'(t)\Bigr\rvert_{t=0} = \mu
+         \end{align*}
+     \end{enumerate}
+    
+    \item \textbf{Standard Normal distribution: } Assume $z = \frac{x-\mu}{\sigma}$, then $E(z) = 0$ and $V(z) = 1$. In such a scenario, $z$ is known as \textbf{the standard normal variate} which is denoted as $z\sim\mathcal{N}(0,1)$
+    \begin{enumerate}
+        \item Probability density function:
+        \begin{equation*}
+            \varphi(z) = \frac{1}{\sqrt{2\pi}}e^{-z^2/2}
+        \end{equation*}
+        \item Cumulative density function:
+        \begin{equation*}
+            \Phi(z) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{z} e^{-z^2/2}dz
+        \end{equation*}
+        \item $z_\alpha$ for $z$ critical values: $z_\alpha$ represents the $100(1-\alpha)$th percentile of the standard normal distribution. The values of $z_\alpha$ is often called as the $z$ \textbf{critical values}.
+        \begin{center}
+            \begin{tikzpicture}
+                \def\normaltwo{\x,{4*1/exp(((\x-3)^2)/2)}}
+                % input y parameter
+                \def\y{4.4}
+                % this line calculates f(y)
+                \def\fy{4*1/exp(((\y-3)^2)/2)}
+                % Shade orange area underneath curve.
+                \fill [fill=orange!60]  -- plot[domain=4.4:6] (\normaltwo) -- ({\y},0) -- cycle;
+                %Draw and label normal distribution function
+                \draw[color=blue,domain=0:6] plot (\normaltwo) node[right] {};
+                %Add dashed line dropping down from normal.
+                \draw[dashed] ({\y},{\fy}) -- ({\y},0) node[below] {$z_\alpha$};
+                 %Add axis labels
+                \draw (-.2,2.5) node[left] {$f(z)$};
+                \draw (3,-.5) node[below] {$z$};
+                %Add axes
+                \draw[->] (0,0) -- (6.2,0) node[right] {};
+                \draw[->] (0,0) -- (0,5) node[above] {};
+                %Add nodes
+                \node[coordinate,pin=45:{$P(Z\geq z_\alpha) = \alpha$}]
+                at (5,0.2399) {};
+                \node[coordinate, pin=0:{$z$ curve}]
+                at (3,4) {};
+            \end{tikzpicture}
+        \end{center}
+    \end{enumerate}
+    \item \textbf{Approximating Binomial distribution:}
+    Let $X$ be a random variable based on $n$ trials with a success probability $p$. If the binomial histogram is not too skewed, then $X$ has $\approx$ normal distribution with $\mu = np$ and $\sigma = \sqrt{npq}$ or 
+    \begin{equation*}
+        P(X\leq x) = B(x; n,p) \approx \Phi\left(\frac{x+0.5-np}{\sqrt{npq}}\right)
+    \end{equation*}
+    
+    \item \textbf{Exponential and Gamma distribution:}
+    \begin{enumerate}
+        \item Exponential distribution:
+        \begin{equation*}
+            f(x;\lambda) = \begin{cases}
+            \lambda e^{-\lambda x}\quad & x\geq 0\\
+            0\quad & \text{otherwise}
+            \end{cases}
+        \end{equation*}
+        Mean ($\mu$) = $\frac{1}{\lambda}$ and variance ($\sigma^2$) = $\frac{1}{\lambda^2}$
+        \item Gamma function: For a parameter $\alpha > 0$, we define the \textbf{gamma function} as
+        \begin{equation*}
+            \Gamma(\alpha) = \int_{0}^{\infty}x^{\alpha-1}e^{-x}dx
+        \end{equation*}
+        Some important properties:
+        \begin{enumerate}
+            \item $\Gamma(\alpha) = (\alpha-1)\cdot\Gamma(\alpha-1)$
+            \item $\Gamma(n) = (n-1)!$
+            \item $\Gamma(\frac{1}{2}) = \sqrt{\pi}$
+        \end{enumerate}
+        Gamma distribution:
+        \begin{equation*}
+            f(x; \alpha,\beta) = \begin{cases}
+              \frac{1}{\beta^\alpha\Gamma(\alpha)}x^{\alpha-1}e^{-x/\beta}\quad & x\geq 0\\
+              0 \quad &\text{otherwise}
+            \end{cases}
+        \end{equation*}
+        \textbf{Expectation}: $E(x) = \mu = \alpha\beta$\\
+        \textbf{Variance}: $V(x) = \sigma^2 = \alpha\beta^2$\\
+        The gamma distribution of a random variable $X$ with parameters $\alpha$ and $\beta$ is denoted as:
+        \begin{equation*}
+            P(X\leq x) = F(x; \alpha,\beta) = F\left(\frac{x}{\beta}; \alpha\right)
+        \end{equation*}
+    \end{enumerate}
+        
+\end{itemize}
+\end{document}
