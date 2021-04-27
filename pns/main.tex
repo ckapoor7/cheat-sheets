@@ -205,6 +205,16 @@ Consider a function $f(x)$ to be a PDF of a continuous random variable $x$
         \begin{equation*}
             P(X\leq x) = F(x; \alpha,\beta) = F\left(\frac{x}{\beta}; \alpha\right)
         \end{equation*}
+    
+    \item \textbf{Chi-Squared distribution:}\\
+    For a positive integer $\nu$ (\textbf{degrees of freedom of the random variable $X$}), the PDF of this distribution takes the form
+    \begin{equation*}
+        f(x; \nu) = \begin{cases}
+        \frac{1}{2^{\nu/2}\Gamma(\nu/2)}x^{\left(\frac{\nu}{2}-1\right)}e^{-\frac{x}{2}} & x\geq 0\\
+        0 & x < 0
+        \end{cases}
+    \end{equation*}
+        This can be modelled as a gamma distribution with the parameters $\alpha = \frac{\nu}{2}$ and $\beta = 2$.
     \end{enumerate}
         
 \end{itemize}
