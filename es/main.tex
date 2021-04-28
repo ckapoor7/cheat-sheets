@@ -1,0 +1,152 @@
+\documentclass[a4paper]{article} 
+\input{head}
+\begin{document}
+
+%Title section
+
+\fancyhead[C]{}
+\hrule \medskip % Upper rule
+\begin{minipage}{0.295\textwidth} 
+\raggedright
+\footnotesize
+Chaitanya Kapoor \hfill\\   
+2020A3PS1219P\hfill\\
+f20201219@pilani.bits-pilani.ac.in
+\end{minipage}
+\begin{minipage}{0.4\textwidth} 
+\centering 
+\Large
+Electrical Sciences
+\end{minipage}
+\begin{minipage}{0.295\textwidth} 
+\raggedleft
+\today\hfill\\
+\end{minipage}
+\medskip\hrule 
+\bigskip
+
+\begin{itemize}
+    \item \textbf{$1^{\text{st}}$ order circuits:}
+    \begin{enumerate}
+        \item \underline{$RC$ circuits}:
+        \begin{center}
+            \begin{circuitikz}[american, scale = 1.5][americanvoltages]
+                    \draw (0,0)
+                    to[pC=$C$, i>=$i_C$, v<=$V(t)$] (0,2) -- (2,2)
+                    to[R=$R$, i>=$i_R$] (2,0) -- (0,0);
+            \end{circuitikz}
+        \end{center}    
+        Using KCL gives:
+        \begin{align*}
+            i_C + i_R = 0\\
+            \implies C\left(\frac{dV}{dt}\right) + \frac{V}{R} = 0\\
+            \therefore V(t) = V_0e^{-\frac{t}{RC}}
+        \end{align*}
+    
+        \item \underline{$RL$ circuits}:
+        \begin{center}
+            \begin{circuitikz}[american, scale = 1.5][americanvoltages]
+                    \draw (0,0)
+                    to[L=$L$, v<=$V(t)$] (0,2)
+                    to[short,i=$i$] (2,2)
+                    to[R=$R$] (2,0) -- (0,0);
+            \end{circuitikz}
+        \end{center}
+         Using KVL gives: 
+            \begin{align*}
+                Ri + L\left(\frac{di}{dt}\right) = 0\\
+                \therefore i(t) = i_0e^{-\frac{t}{\tau}}
+            \end{align*}
+            Where $\tau$ is the time constant of the circuit given by $\frac{L}{R}$
+        
+        \item \underline{Complete response}:\\
+        Consider the following $RC$ circuit with a source voltage $V_S$
+        \begin{center}
+            \begin{circuitikz}[american, scale = 1.5][americanvoltages]
+                    \draw (0,0)
+                    to [V,v<=$V_S$] (0,2)
+                    to [R=$R$] (4,2)
+                    to[pC=$C$, v<=$V_C(t)$] (4,0)--(0,0)
+                    to[short, i=$i$] (4,0);
+                    \draw (0,2) to[cspst] ++(1,0);
+            \end{circuitikz}
+        \end{center}
+        Using KVL in the closed loop gives us the following:
+        \begin{align*}
+          V_s &= iR + V_C\\
+          \implies V_S &= RC\left(\frac{dV_c}{dt}\right) + V_C\\
+          \frac{dV_C}{dt} + &\frac{V_C}{RC} = \frac{V_S}{RC}\\
+          \therefore  V_C(t) &= Ae^{-\frac{t}{\tau}} + V_S
+        \end{align*}
+        The exponential term corresponds to the \textbf{natural response}, whereas the constant term $V_S$ corresponds to the \textbf{forced response}. The value of the coeffecient $A$ is computed using the boundary conditions of the differential equation: \boxed{A = V_C(0) - V_S}
+
+    \end{enumerate}
+  \item \textbf{$2^{\text{nd}}$ order circuits}:
+    \begin{enumerate}
+    \item \underline{Natural response}:\\
+      \begin{center}
+        \begin{circuitikz}[american, scale = 1.5][americanvoltages]
+          \draw (0,0)--(0,2)
+          to [R=$R$, v>=$V_R$, i=$i_0$] (2,2)
+          to [L=$L$, v>=$V_L$] (4,2)
+          to [C=$C$, v>=$V_0$] (4,0) -- (0,0);
+        \end{circuitikz}
+      \end{center}
+      Applying KVL in the closed loop gives
+      \begin{align*}
+        V_R + V_L +V_0 &= 0\\
+        \implies iR + L\left(\frac{di}{dt}\right) + V_0 &= 0\\
+        \therefore L\frac{d^2i}{dt^2} + R\frac{di}{dt} + \frac{i}{C} &= 0
+      \end{align*}
+      Thus, we have the following characteristic differential equation: \boxed{s^2 + 2\alpha s + \omega_n^2 = 0}. The solutions of this equaiton take the form
+      \begin{equation*}
+        s_1, s_2 = -\alpha\pm\sqrt{\alpha^2-\omega_n^2}
+      \end{equation*}
+      Here, $\alpha = \frac{R}{2L}$ and $\omega_n = \frac{1}{\sqrt{LC}}$
+      From this, we have 3 different cases that arise on account of the nature of the roots $s_1, s_2$:
+      \begin{enumerate}
+      \item \textbf{Overdamped}: $s_1, s_2$ are \textbf{real and distinct}. Thus, $\alpha>\omega_n$. The natural solution takes the form \boxed{V_0(t) = A_1e^{s_1t}+A_2e^{s_2t}}
+      \item \textbf{Critically damped}: $s_1, s_2$ are \textbf{real}. Thus, $\alpha = \omega_n$. The natural solution takes the form \boxed{V_0(t) = A_1e^{st}+A_2te^{st}}
+      \item \textbf{Under damped}: $s_1, s_2$ are \textbf{complex}. Thus $\alpha<\omega_n$. The roots $s_1, s_2 = -\alpha + j\omega_d $ where $j$ is the quantity $\sqrt{-1}$ and $\omega_d = \sqrt{\omega_n^2-\alpha^2}$. Hence, the natural solution of the the system is of the form \boxed{V_0(t) = B_1e^{-\alpha t}\cos{\omega_d t} + B_2e^{-\alpha t}\sin{\omega_d t}}
+      \end{enumerate}
+
+    \item \underline{Forced response}: If we add a voltage source $V_S$ to the previous circuit, it is wasy to observe that by the superposition theorem, the quantity $V_S$ simply gets added to the natural response solutions of the characteristic differential equations.
+    \end{enumerate}
+    
+  \item \textbf{AC analysis:}\\
+    \begin{enumerate}
+    \item \underline{Impedance and admittance}:\\
+      All the results (in partiucular, the solutions of $2^{\text{nd}}$ order circuits) of DC circuit analysis carry forward here.\\
+      The \textbf{impedance} ($Z$) of the circuit elements is the $AC$ analog resistance.
+      \begin{equation*}
+        Z = \frac{V}{i} = R \text{ or } j\omega  \text{ or } \frac{1}{j\omega C}
+      \end{equation*}
+      Similarly, the AC analog of conductance is called \textbf{admittance} ($Y$)
+      \begin{equation*}
+        Y = \frac{i}{V} = \frac{1}{R} \text{ or } \frac{1}{j\omega L} \text{ or }j\omega C
+      \end{equation*}
+      In both of these, $j$ denotes the complex square root ($\sqrt{-1}$) and $\omega$ is the angular freqeuncy of the voltage source.
+
+    \item \underline{Power}:\\
+      Consider an AC voltage source with a time varying current $i(t)$ and a time varying voltage $V(t)$. The power due to this source is
+      \begin{align*}
+        p(t) = v(t)i(t) &= V_m\cos{(\omega t + \varphi_1)}I_m\sin{(\omega t + \varphi_2)}\\
+        &= \frac{1}{2}V_mI_M[\cos{(\omega t + \varphi_1 + \omega t + \varphi_2)} + \cos(\varphi_1-\varphi_2)]
+      \end{align*}
+      Here, $V_m$ and $I_M$ denote the peak voltage and current respectively. From here, we calculate the average power to be
+      \begin{equation*}
+        \langle p(t)\rangle = \frac{1}{2}V_MI_M\cos{(\varphi_1-\varphi_2)}
+      \end{equation*}
+      Here, we define another quantity, the \textbf{RMS voltage} ($V_{\text{RMS}}$) = $\frac{V_M}{\sqrt{2}}$. Using this, the average power is written as
+      \begin{equation*}
+        \langle p(t)\rangle = V_{\text{RMS}}I_{\text{RMS}}\cos{\theta}
+      \end{equation*}
+      $\theta$ being the phase difference ($\varphi_1 - \varphi_2$). Note that $\varphi_1$ denotes the phase angle of voltage and $\varphi_2$ denotes the phase angle of current.\\
+      Also, the $RMS$ voltage (and current) is computed by performing the following integral:
+      \begin{equation*}
+        V_{\text{RMS}} = \sqrt{\frac{1}{T}\int_{t_0}^{t_0+t}v^2(t)dt}
+      \end{equation*}
+    \end{enumerate}
+\end{itemize}
+\end{document}
+
