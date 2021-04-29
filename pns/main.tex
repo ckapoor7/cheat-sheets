@@ -45,7 +45,7 @@ Probability and Statistics
     For any arbitrary function $h(X)$ of the form $(aX+b)$, we have $V(h(X)) = a^2V(X)$
     \item \textbf{Moment Generating Function (MGF): }For a discrete random variable $X$, $m_X(t) = E(e^{tX})$. Using this, we have the following
     \begin{equation*}
-        \frac{d^rm_X(t)}{dt^r}\biggr\rvert_{t = 0} = E(X^r)
+        \frac{\mathrm{d}^rm_X(t)}{\mathrm{d}t^r}\biggr\rvert_{t = 0} = E(X^r)
     \end{equation*}
     \item \textbf{Bernoulli Distribution: } Consider a random variable $X$ which takes Boolean values (0 and 1). Let the probability of obtaining the value 1 be $p$ and $0$ be $q = (1-p)$ 
     \begin{enumerate}
@@ -85,19 +85,19 @@ Probability and Statistics
 \section{Continuous probability}
 Consider a function $f(x)$ to be a PDF of a continuous random variable $x$
 \begin{itemize}
-    \item $P(a\leq x\leq b) = \int_{a}^{b}f(x)dx$
-    \item \textbf{CDF = }$F(x) = \int_{-\infty}^{x}f(x)dx$
+    \item $P(a\leq x\leq b) = \int_{a}^{b}f(x)\mathrm{d}x$
+    \item \textbf{CDF = }$F(x) = \int_{-\infty}^{x}f(x)\mathrm{d}x$
     \item \textbf{Expectation value and MGF:}
     \begin{align*}
-    E(x) &= \int_{-\infty}^{\infty}xf(x)dx\\
-    E(H(x)) &= \int_{-\infty}^{\infty}H(x)f(x)dx\\
-    m_x(t) = E(e^{xt}) &= \int_{-\infty}^{\infty} e^{xt}f(x)dx
+    E(x) &= \int_{-\infty}^{\infty}xf(x)\mathrm{d}x\\
+    E(H(x)) &= \int_{-\infty}^{\infty}H(x)f(x)\mathrm{d}x\\
+    m_x(t) = E(e^{xt}) &= \int_{-\infty}^{\infty} e^{xt}f(x)\mathrm{d}x
     \end{align*}
     \item \textbf{Moments, mean and variance:}
     \begin{align*}
-        E(x^k) &= \int_{-\infty}^{\infty} x^kf(x)dx = \left(\frac{d^k}{dx^k}\left(m_x(t)\right)\right)\biggr\rvert_{t = 0}\\
-        \mu &= E(x) = \int_{-\infty}^{\infty} xf(x)dx\\
-        \sigma^2 &= \left(\int_{-\infty}^{\infty} x^2f(x)dx\right) - \left(\int_{-\infty}^{\infty} xf(x)dx\right)^2
+        E(x^k) &= \int_{-\infty}^{\infty} x^kf(x)\mathrm{d}x = \left(\frac{\mathrm{d}^k}{\mathrm{d}x^k}\left(m_x(t)\right)\right)\biggr\rvert_{t = 0}\\
+        \mu &= E(x) = \int_{-\infty}^{\infty} xf(x)\mathrm{d}x\\
+        \sigma^2 &= \left(\int_{-\infty}^{\infty} x^2f(x)\mathrm{d}x\right) - \left(\int_{-\infty}^{\infty} xf(x)\mathrm{d}x\right)^2
     \end{align*}
     \item \textbf{Uniform distribution:\\ }
     \begin{enumerate}
@@ -123,7 +123,7 @@ Consider a function $f(x)$ to be a PDF of a continuous random variable $x$
          \end{equation*}
          \item MGF, expectation:
          \begin{align*}
-             m_x(t_ &= e^{\mu t+\frac{t^2\sigma^2}{2}}\\
+             m_x(t) &= e^{\mu t+\frac{t^2\sigma^2}{2}}\\
              E(x) &= m_x'(t)\Bigr\rvert_{t=0} = \mu
          \end{align*}
      \end{enumerate}
@@ -136,7 +136,7 @@ Consider a function $f(x)$ to be a PDF of a continuous random variable $x$
         \end{equation*}
         \item Cumulative density function:
         \begin{equation*}
-            \Phi(z) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{z} e^{-z^2/2}dz
+            \Phi(z) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{z} e^{-z^2/2}\mathrm{d}z
         \end{equation*}
         \item $z_\alpha$ for $z$ critical values: $z_\alpha$ represents the $100(1-\alpha)$th percentile of the standard normal distribution. The values of $z_\alpha$ is often called as the $z$ \textbf{critical values}.
         \begin{center}
@@ -184,7 +184,7 @@ Consider a function $f(x)$ to be a PDF of a continuous random variable $x$
         Mean ($\mu$) = $\frac{1}{\lambda}$ and variance ($\sigma^2$) = $\frac{1}{\lambda^2}$
         \item Gamma function: For a parameter $\alpha > 0$, we define the \textbf{gamma function} as
         \begin{equation*}
-            \Gamma(\alpha) = \int_{0}^{\infty}x^{\alpha-1}e^{-x}dx
+            \Gamma(\alpha) = \int_{0}^{\infty}x^{\alpha-1}e^{-x}\mathrm{d}x
         \end{equation*}
         Some important properties:
         \begin{enumerate}
@@ -218,4 +218,5 @@ Consider a function $f(x)$ to be a PDF of a continuous random variable $x$
     \end{enumerate}
         
 \end{itemize}
+\par\noindent\rule{\textwidth}{0.4pt}
 \end{document}
