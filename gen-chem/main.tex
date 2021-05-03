@@ -141,4 +141,111 @@ Here, we are concerned only with the permissible energy values:
     E_v = \left(v+\frac{1}{2}\right)h\nu
 \end{equation*}
 Where $\nu$ is the \textbf{vibrational frequency} given by $\frac{1}{2\pi}\sqrt{\frac{k}{m}}$. The values of $\nu$ include the set of all non-negative integers.
+
+\section{Spectra of Complex Atoms}
+\begin{itemize}
+    \item \textbf{Total orbital angular momentum}: $L = l_1+l_2,\dots, |l_1-l_2|$
+    \item \textbf{Total spin angular momentum}: $S = s_1+s_2,\dots, |s_1-s_2|$
+    \item \textbf{Total angular momentum}: $J = L+S,\dots, |L-S|$
+    \item \textbf{Term symbol}: ${}^{2S+1}L_J$\\
+    Here, $L$ takes integral values starting from 0, corresponding to the sub-shell, that is 0($s$), 1($p$), $\dots$ etc.
+    \item For a given value of $J$, there are $(2J+1)$ degenerate states and for a term, $(2L+1)(2S+1)$ states exist.
+    \item Note that all atomic transitions must take place in compliance to the \textbf{selection rules}:
+    \begin{enumerate}
+        \item $\Delta L = 0, \pm 1$
+        \item $\Delta S = 0$
+        \item $\Delta J = 0, \pm 1$ (an exception being the forbidden transition between two levels where $J=0$)
+    \end{enumerate}
+\end{itemize}
+To determine the ground state of an atom, we use the following procedure:
+\begin{enumerate}
+    \item Compute the highest value of $S$ using the above definition
+    \item Similarly, compute the highest value of $L$
+    \item Using these values, calculate the maximum and minimum values of $J$. From here, 2 cases arise:
+    \begin{enumerate}
+        \item Less than $\frac{1}{2}$ filled sub-shell $\implies$ $J_{\text{max}}$
+        \item Greater than $\frac{1}{2}$ filled sub-shell $\implies$ $J_{\text{min}}$
+    \end{enumerate}
+\end{enumerate}
+
+\section{Spectroscopy}
+Nomenclature of some frequently used symbols:
+\begin{enumerate}
+    \item $I_0 \rightarrow$ Intensity of incident radiation
+     \item $I \rightarrow$ Intensity of transmitted radiation
+    \item $[C] \rightarrow$ Concentration
+    \item $L \rightarrow$ Path length of radiation through the sample
+    \item $\epsilon \rightarrow$ Molar absorption coefficient $\left(=\frac{1}{[C][L]}\right)$
+\end{enumerate}
+\begin{itemize}
+    \item  \textbf{Absorbance} = $A = \log{\left(\frac{I_0}{I}\right)}$ and \textbf{transmittance} $T = \left(\frac{I}{I_0}\right)$. From this, it can be inferred that $A = -\log{T}$.\\
+    An alternate for of absorbance is $A = \epsilon [C]L$
+    \item The total absorbance of a mixture at a given wavelength $\lambda$ is
+    \begin{align*}
+        A &= A_A + A_B\\
+        &= \epsilon_A[A]I + \epsilon_B[B]I
+    \end{align*}
+    \item The individual absorbance for a mixture of 2 light absorbing species (albeit at two separate wavelengths: $\lambda_1$ and $\lambda_2$) is obtained by solving a system of 2 simultaneous equations (similar to the one above)
+    \begin{align*}
+        [A] &= \frac{\epsilon_{B2}A_1-\epsilon_{B1}A_2}{L(\epsilon_{A1}\epsilon_{B2}-\epsilon_{A2}\epsilon_{B1})}\\
+        [B] &= \frac{\epsilon_{A1}A_2-\epsilon_{A2}A_1}{L(\epsilon_{A1}\epsilon_{B2}-\epsilon_{A2}\epsilon_{B1})}
+    \end{align*}
+\end{itemize}
+%Rotational spectroscopy
+\subsubsection{Rotational Spectroscopy}
+\begin{itemize}
+    \item \textbf{Rotational constant} $B = \frac{\hbar^2}{4\pi I}$ 
+    \item \textbf{Energy levels} $E_j = hBJ(J+1) = J(J+1)\frac{\hbar^2}{2I}$\\
+    In this case $J = 0,1,2,\dots$ denotes the \textbf{rotational quantum number}, $B$ denotes the rotational constant and $I = \sum m_ir_i^2$, the \textbf{moment of inertia}.
+    \item In the absence of an electric/magnetic field, all rotational levels are $(2J+1)$ fold degenerate.
+    \item Population of molecules follows the \textbf{Boltzmann distribution}, ie:
+    \begin{equation*}
+        \frac{N_2}{N_1} = e^{-(E_2-E_1)/kT}
+    \end{equation*}
+    Here, $E_j$ indicates the energy level of the $j^{\text{th}}$ state.\\
+    In the state of thermal equilibrium, the population of any level $P_j$ is given by the relation
+    \begin{equation*}
+        \frac{P_j}{P_0} = (2J+1)e^{-(hBJ(J+1)/kT)}
+    \end{equation*}
+\end{itemize}
+
+%Vibrational spectroscopy
+\subsubsection{Vibrational Spectroscopy}
+\begin{itemize}
+    \item Depth of potential well = \textbf{Strength of bond} (in terms of the force constant $k$)
+    \item The energy levels are \textbf{equally spaced} by a gap of $h\nu$ and the \textbf{zero point energy} is given by $\frac{h\nu}{2}$
+    \item Vibrational energy levels become \textbf{less widely spaced} due to \textbf{anharmonicity}.
+    \item In a molecule having $N$ atoms, the position (degrees of freedom) of all atoms is $3N$.
+    \begin{enumerate}
+        \item Translational: 3
+        \item Rotational: 2 (linear) or 3 (non-linear)
+        \item Vibrational: $3N-5$ (linear) or $3N-6$ (non-linear)
+    \end{enumerate}
+\end{itemize}
+
+%IR spectroscopy
+\subsubsection{IR Spectroscopy}
+\begin{itemize}
+    \item Below 1500$\text{cm}^{-1}$: \textbf{fingerprint region}
+    \item When IR radiation is absorbed, the intensity of transmitted radiation \textbf{decreases} and hence a \textbf{dip} in the spectrum
+\end{itemize}
+Some important peaks in the IR spectrum:
+\begin{center}
+        \begin{tabular}{ |p{3cm}|p{3cm}|  }
+             \hline
+             \multicolumn{2}{|c|}{IR spectrum} \\
+             \hline
+             Functional group & Typical absorption ($\text{cm}^{-1}$) \\
+             \hline
+             =C-H stretch   & 3000-3100 \\
+             N-H stretch &   3300-3500  \\
+             O-H stretch & 3550-3200 \\
+             C=C stretch    & 1680-1620 \\
+             C=C bending & 1500-1700  \\
+             C=O stretch & $\approx 1700$  \\
+             \hline
+        \end{tabular}
+\end{center}
+It must be noted that the O-H stretching frequency \textbf{decreases} due to \textbf{H-bonding} (ie - the spectral graph \textit{broadens} due to this)
 \end{document}
+
