@@ -1,0 +1,114 @@
+\documentclass[a4paper]{article} 
+\input{head}
+\begin{document}
+
+%Title section
+
+\fancyhead[C]{}
+\hrule \medskip % Upper rule
+\begin{minipage}{0.295\textwidth} 
+\raggedright
+\footnotesize
+Chaitanya Kapoor \hfill\\   
+2020A3PS1219P\hfill\\
+f20201219@pilani.bits-pilani.ac.in
+\end{minipage}
+\begin{minipage}{0.4\textwidth} 
+\centering 
+\Large
+Oscillations 
+\end{minipage}
+\begin{minipage}{0.295\textwidth} 
+\raggedleft
+\today\hfill\\
+\end{minipage}
+\medskip\hrule 
+\bigskip
+
+\section{Simple harmonic oscillators}
+\begin{itemize}
+    \item \underline{Simple pendulum}: 
+    \begin{itemize}
+        \item Differential equation $\rightarrow \ddot{\theta} + \frac{g}{L}\theta = 0$.   
+        \item Time period $\rightarrow 2\pi\sqrt{\frac{L}{g}}$
+    \end{itemize}
+    \item \underline{Physical pendulum}:
+    \begin{itemize}
+        \item Differential equation $\rightarrow \ddot{\theta} + \frac{mgL}{2I}\theta = 0$.  
+        \item Time period $\rightarrow 2\pi\sqrt{\frac{I_a}{mgL}}$\\ 
+        Where $L$ is the distance between the axis of rotation and the center of mass of the body, and $I_a$ is moment of inertia about the \textbf{axis of rotation}. This equation can also be rewritten in terms of the radius of gyration of the body $k$:
+        \begin{equation*}
+            T = 2\pi\sqrt{\frac{(k^2+L^2)}{gL}}
+        \end{equation*}
+    \end{itemize}
+    \item \underline{Spring-mass system}: 
+    \begin{itemize}
+        \item Equation of motion $\rightarrow x(t) = A\cos{\omega t}$ and $v(t) = -A\omega\sin{\omega t}$
+        \item Kinetic energy $= \frac{1}{2}mv^2 = \frac{1}{2}m\omega^2A^2\sin^2{\omega t} = \frac{1}{2}m\omega^2A^2(1-\cos^2{\omega t}) = \frac{1}{2}m\omega^2(A^2-x^2)$ 
+        \item Potential energy = $\frac{1}{2}kx^2$
+        \item Total energy = $\frac{1}{2}m\omega^2A^2$
+        
+    \end{itemize}
+\end{itemize}
+
+\section{Damped harmonic motion}
+Generally, in addition to the spring force $kx$, we must take into account a \textbf{damping force} which is proportional to the velocity of the oscillator, ie- $F_{\text{damp}} = -b\vec{v} = -b\dot{x}$. Hence, the equation of motion of the system takes the form
+\begin{align*}
+    m\ddot{x} = -kx-b\dot{x}\\
+    \ddot{x}+\frac{b}{m}\dot{x}+\frac{k}{m}x = 0\\
+    \therefore \ddot{x} + \gamma\dot{x} + \omega_0^2 x = 0
+\end{align*}
+Where $\gamma = \frac{b}{m}$ and $\omega_0 = \sqrt{\frac{k}{m}}$. The solution of this characteristic differential equation is 
+\begin{align*}
+    &x(t) = e^{-\frac{\gamma}{2}t}(C_1e^{qt} + C_2e^{-qt})\\
+    &\text{Where } q = \sqrt{\frac{\gamma^2}{4}-\omega_0^2} = \omega
+\end{align*}
+Depending on the relation between $\gamma$ and $\omega_0$, we characterize the types of damped motion. 
+\begin{enumerate}
+    \item Over-damped : $\frac{\gamma^2}{4} > \omega_0$ and $x(t) = e^{-\frac{\gamma}{2}t}(C_1e^{qt} + C_2e^{-qt})$ 
+    \item Critically damped : $\frac{\gamma^2}{4} = \omega_0$ and $x(t) = (C_1+C_2t)e^{-\frac{\gamma}{2}t}$
+    \item Over damped : $\frac{\gamma^2}{4} < \omega_0$ and $x(t) = Ae^{-\frac{\gamma}{2}t}\cos{qt}$
+\end{enumerate}
+The energy of a damped system also decays with time, and can be described with the help of the parameter $\gamma$, ie: $\boxed{E = E_0e^{-\gamma t}}$. In this regard, a new parameter called the \textbf{Quality factor (Q-value)} is introduced. It can be defined in any two of the following ways
+\begin{align*}
+    Q &= \frac{\omega}{\gamma}\\
+      &= 2\pi\left(\frac{\text{Energy at }t}{\text{Energy loss per cycle}}\right)
+\end{align*}
+
+\section{Forced oscillations}
+A free or damped oscillation with a harmonic driving force $(F = F_0\cos{\omega t})$ has the differential equation 
+\begin{equation*}
+    \ddot{x} + \gamma\dot{x} + \omega_0^2 x = \frac{F_0}{m}\cos{\omega t}
+\end{equation*}
+We try a solution of the form $x=Ae^{i(\omega t-\delta)}$. After a series of steps, we arrive at the following expressions:
+\begin{align*}
+    A(\omega) &= \frac{F_0}{m\sqrt{(\omega_0^2-\omega^2)^2+\gamma^2\omega^2}}\\
+   \delta(\omega) &= \arctan{\left(\frac{\gamma\omega}{\omega_0^2-\omega^2}\right)} 
+\end{align*}
+The cases of \textbf{resonant frequency} are of particular interest to us (when $\omega = \omega_0$). At this condition, 
+\begin{align*}
+    A(\omega_0) = A_0 &= \frac{F_0Q}{m\omega^2}\\
+    \tan{\delta(\omega_0)} &= \infty
+\end{align*}
+Another case of interest is when the angular frequency is \textit{just less than} the resonant frequency. This is known as \textbf{amplitude resonance} and the particular frequency is denoted by $\omega_m$. The frequency and amplitude respectively are:
+\begin{align*}
+    \omega_m = \omega_0\sqrt{\left(1-\frac{1}{2Q^2}\right)} \approx \omega_0\left(1-\frac{1}{4Q^2}\right)\\
+    A(\omega_m) = \frac{F_0}{m}\left(\frac{Q}{\sqrt{1-\frac{1}{4Q^2}}}\right)
+\end{align*}
+Next, we take into consideration a \textbf{forced oscillation without the action of a damping force}. The equation of motion for such a body is
+\begin{equation*}
+    \ddot{x} + \omega_0^2x = \frac{F_0}{m}\cos{\omega t}
+\end{equation*}
+Which has the solution
+\begin{equation*}
+    x(t) = A_0\cos{(\omega t+\varphi)} + \frac{F_0}{m(\omega^2-\omega_0^2)}\cos{\omega t}
+\end{equation*}
+All the symbols having their usual meaning.\\
+A set of results for terms relating to power are listed below:
+\begin{enumerate}
+    \item \textbf{Average power} $(\bar{P})$ = $\frac{F_0}{2m\omega_0 Q}\frac{1}{\left(\frac{\omega_0}{\omega}-\frac{\omega}{\omega_0}\right)^2 + \frac{1}{Q^2}}$
+    \item \textbf{Maximum power} $(\bar{P}_{\text{max}}) = \frac{F_0^2Q}{2m\omega_0}$
+    \item \textbf{Half power frequency} $\omega = \omega_0\left(1\pm\frac{\omega_0}{2Q}\right) = \omega_0\left(1\pm\frac{\gamma}{2}\right) $
+    \item \textbf{Bandwidth} $(\Delta\omega) = \gamma = \frac{\omega_0}{Q}$ which represents the \textbf{full width at half maximum} (FWHM)
+\end{enumerate}
+\end{document}
